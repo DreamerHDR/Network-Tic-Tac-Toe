@@ -1,0 +1,135 @@
+* {
+	padding: 0;
+	margin: 0;
+	user-select: none;
+}
+
+.banner {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	color: #02041bc0;
+	padding: 10px;
+	font-size: 3em;
+	text-align: center;
+	text-shadow: 3px 3px 0 rgba(0,0,0,0.1),
+							 6px 6px 0 rgba(0,0,0,0.1),
+							 9px 9px 0 rgba(0,0,0,0.1);
+	font-family: 'Permanent Marker', cursive; /* Шрифт, имитирующий граффити */
+}
+
+
+body {
+	position: relative; /* Добавляем свойство position */
+  height: 130vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
+  background-size: 30px 30px;
+  overflow-y: hidden; /* Запрещаем прокрутку вниз */
+	overflow-x: hidden;
+}
+
+
+.board {
+	display: grid;
+	grid-template-columns: repeat(3, 20vmin);
+	grid-template-rows: repeat(3, 20vmin);
+	grid-gap: 3px; 
+	padding: 5cap;
+}
+
+.cell {
+	position: relative;
+	cursor: pointer;
+	box-sizing: border-box;
+	border: 3px solid #000;
+	margin: -3px; /* Отрицательное значение для margin */
+}
+
+
+
+.cell.X::before,
+.cell.X::after {
+	content: "";
+	position: absolute;
+	width: 20vmin;
+	height: 2vmin;
+	background-color: red;
+	top: 50%; /* Располагаем по вертикали по середине */
+	left: 50%; /* Располагаем по горизонтали по середине */
+	transform-origin: center; /* Устанавливаем точку трансформации в центр */
+}
+
+.cell.X::before {
+	transform: translate(-50%, -50%) rotate(45deg); /* Поворачиваем на 45 градусов */
+}
+
+.cell.X::after {
+	transform: translate(-50%, -50%) rotate(-45deg); /* Поворачиваем на -45 градусов */
+}
+
+.cell.O::before,
+.cell.O::after {
+	content: "";
+	position: absolute;
+	width: 70%; /* Ширина круга */
+	height: 70%; /* Высота круга */
+	background-color: transparent; /* Цвет круга */
+	border: 15px solid blue; /* Толщина и цвет границы круга */
+	border-radius: 50%; /* Создаем круг с помощью скругленных углов */
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); /* Центрируем круг внутри клетки */
+}
+
+.message {
+	position: relative; /* Добавляем свойство position */
+	top: 5vmin; /* Сдвигаем элемент вниз */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 4vmin;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: black;
+}
+
+.chat {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Располагаем чат справа */
+  transform: translateY(-50%);
+  width: 200px; /* Ширина чата */
+  height: 300px; /* Высота чата */
+  /* background-color: #ffffff; */
+  border: 2px solid #000000;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-messages {
+	color: rgb(0, 0, 0);
+	overflow-y: scroll;
+	height: 80%; /* Установите высоту на 80% от общей высоты чата */
+  overflow-y: auto;
+	margin-top: 20px;
+  font-family: Arial, sans-serif; /* Пример установки шрифта */
+}
+
+.chat-messages div {
+  margin-bottom: 5px; /* Добавляет отступ между сообщениями */
+}
+
+#chat-input {
+  width: calc(100% - 3px); /* Устанавливаем ширину поля ввода */
+  margin-right: 10px; /* Отступ справа */
+}
+
+.chat button {
+  width: 100%; /* Ширина кнопки */
+}
+
